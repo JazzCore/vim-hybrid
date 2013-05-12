@@ -64,8 +64,9 @@ let colors_name = "hybrid"
 if has("gui_running")
   let s:vmode      = "gui"
   let s:background = "#1d1f21"
-  let s:foreground = "#c5c8c6"
+  let s:foreground = "#d2d4d3"
   let s:selection  = "#373b41"
+  let s:linnumber  = "#605958"
   let s:line       = "#282a2e"
   let s:comment    = "#707880"
   let s:red        = "#cc6666"
@@ -81,6 +82,9 @@ if has("gui_running")
   let s:addfg      = "#d7ffaf"
   let s:changebg   = "#5F5F87"
   let s:changefg   = "#d7d7ff"
+  let s:stlshaded  = "#0a0a0a"
+  let s:stlfont    = "#aeb3b8"
+  let s:stl        = s:window
 else
   let s:vmode      = "cterm"
   let s:background = "234"
@@ -137,6 +141,7 @@ exe "let s:bg_none       = ' ".s:vmode."bg=".s:none      ."'"
 exe "let s:bg_foreground = ' ".s:vmode."bg=".s:foreground."'"
 exe "let s:bg_background = ' ".s:vmode."bg=".s:background."'"
 exe "let s:bg_selection  = ' ".s:vmode."bg=".s:selection ."'"
+exe "let s:bg_linnumber  = ' ".s:vmode."bg=".s:linnumber ."'"
 exe "let s:bg_line       = ' ".s:vmode."bg=".s:line      ."'"
 exe "let s:bg_comment    = ' ".s:vmode."bg=".s:comment   ."'"
 exe "let s:bg_red        = ' ".s:vmode."bg=".s:red       ."'"
@@ -152,11 +157,13 @@ exe "let s:bg_addbg      = ' ".s:vmode."bg=".s:addbg     ."'"
 exe "let s:bg_addfg      = ' ".s:vmode."bg=".s:addfg     ."'"
 exe "let s:bg_changebg   = ' ".s:vmode."bg=".s:changebg  ."'"
 exe "let s:bg_changefg   = ' ".s:vmode."bg=".s:changefg  ."'"
+exe "let s:bg_stlfont    = ' ".s:vmode."bg=".s:stlfont   ."'"
 
 exe "let s:fg_none       = ' ".s:vmode."fg=".s:none      ."'"
 exe "let s:fg_foreground = ' ".s:vmode."fg=".s:foreground."'"
 exe "let s:fg_background = ' ".s:vmode."fg=".s:background."'"
 exe "let s:fg_selection  = ' ".s:vmode."fg=".s:selection ."'"
+exe "let s:fg_linnumber  = ' ".s:vmode."fg=".s:linnumber ."'"
 exe "let s:fg_line       = ' ".s:vmode."fg=".s:line      ."'"
 exe "let s:fg_comment    = ' ".s:vmode."fg=".s:comment   ."'"
 exe "let s:fg_red        = ' ".s:vmode."fg=".s:red       ."'"
@@ -172,6 +179,8 @@ exe "let s:fg_addbg      = ' ".s:vmode."fg=".s:addbg     ."'"
 exe "let s:fg_addfg      = ' ".s:vmode."fg=".s:addfg     ."'"
 exe "let s:fg_changebg   = ' ".s:vmode."fg=".s:changebg  ."'"
 exe "let s:fg_changefg   = ' ".s:vmode."fg=".s:changefg  ."'"
+exe "let s:fg_stlshaded  = ' ".s:vmode."fg=".s:stlshaded ."'"
+exe "let s:fg_stl        = ' ".s:vmode."fg=".s:stl       ."'"
 
 exe "let s:fmt_none      = ' ".s:vmode."=NONE".          " term=NONE"        ."'"
 exe "let s:fmt_bold      = ' ".s:vmode."=NONE".s:b.      " term=NONE".s:b    ."'"
@@ -245,7 +254,7 @@ exe "hi! Folded"        .s:fg_comment     .s:bg_darkcolumn  .s:fmt_none
 exe "hi! FoldColumn"    .s:fg_none        .s:bg_darkcolumn  .s:fmt_none
 exe "hi! SignColumn"    .s:fg_none        .s:bg_darkcolumn  .s:fmt_none
 "		Incsearch"
-exe "hi! LineNr"        .s:fg_selection   .s:bg_none        .s:fmt_none
+exe "hi! LineNr"        .s:fg_linnumber   .s:bg_none        .s:fmt_none
 exe "hi! CursorLineNr"  .s:fg_yellow      .s:bg_none        .s:fmt_bold
 exe "hi! MatchParen"    .s:fg_background  .s:bg_changebg    .s:fmt_none
 exe "hi! ModeMsg"       .s:fg_green       .s:bg_none        .s:fmt_none
@@ -262,8 +271,8 @@ exe "hi! SpellBad"      .s:fg_red         .s:bg_none        .s:fmt_undr
 exe "hi! SpellCap"      .s:fg_blue        .s:bg_none        .s:fmt_undr
 exe "hi! SpellLocal"    .s:fg_aqua        .s:bg_none        .s:fmt_undr
 exe "hi! SpellRare"     .s:fg_purple      .s:bg_none        .s:fmt_undr
-exe "hi! StatusLine"    .s:fg_comment     .s:bg_background  .s:fmt_revr
-exe "hi! StatusLineNC"  .s:fg_window      .s:bg_comment     .s:fmt_revr
+exe "hi! StatusLine"    .s:fg_stl         .s:bg_stlfont     .s:fmt_revr
+exe "hi! StatusLineNC"  .s:fg_stlshaded   .s:bg_comment     .s:fmt_revr
 exe "hi! TabLine"       .s:fg_foreground  .s:bg_darkcolumn  .s:fmt_revr
 "		TabLineFill"
 "		TabLineSel"
